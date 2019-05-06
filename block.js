@@ -18,7 +18,11 @@ class Block {
     let right = this.pos.x + this.w / 2;
     let top = this.pos.y - this.h / 2;
     let bottom = this.pos.y + this.h / 2;
-    return left < x && x < right && top < y && y < bottom;
+    if (left < x && x < right && top < y && y < bottom) {
+      this.w = this.w + ((PI * food.radius) ^ 2) / this.w / 2;
+      this.h = this.h + ((PI * food.radius) ^ 2) / this.h / 2;
+      return true;
+    }
   }
   setDir(x, y) {
     this.xDir = x;
@@ -30,7 +34,7 @@ class Block {
   }
   update() {
     var vel = createVector(this.xDir, this.yDir);
-    vel.setMag(3);
+    vel.setMag(3 - map(this.w * this.h, 400, 100000, 0, 2.5));
     this.pos.add(vel);
     if (
       this.pos.x - this.w / 2 <= -width ||

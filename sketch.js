@@ -21,7 +21,7 @@ function createFood() {
 function draw() {
   background(0);
   fill(255);
-  text("SCORE: " + score, 10, 15);
+  text("SCORE: " + (block.w * block.h).toFixed(0) + "px^2", 10, 15);
   text(floor(frameRate()), width - 20, 15);
   translate(-block.pos.x + width / 2, -block.pos.y + height / 2);
   if (frameCount % 120 == 0) {
