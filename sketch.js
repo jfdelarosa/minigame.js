@@ -1,11 +1,12 @@
 let block;
 let foods = [];
 let score = 0;
+let w = 20;
+let fps = [];
 
 function setup() {
   createCanvas(400, 400);
   rectMode(CENTER);
-  let w = 20;
   block = new Block(
     random(-width + w, width - w),
     random(-height + w, height - w),
@@ -19,11 +20,14 @@ function createFood() {
   return new Food(random(-width, width), random(-height, height));
 }
 function draw() {
+  fps[frameCount % 100] = frameRate();
   background(0);
   fill(255);
   text("SCORE: " + (block.w * block.h).toFixed(0) + "px^2", 10, 15);
   text(floor(frameRate()), width - 20, 15);
-  translate(-block.pos.x + width / 2, -block.pos.y + height / 2);
+  translate(width / 2, height / 2);
+  scale(w / block.w);
+  translate(-block.pos.x, -block.pos.y);
   if (frameCount % 120 == 0) {
     foods.push(createFood());
   }

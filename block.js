@@ -19,8 +19,8 @@ class Block {
     let top = this.pos.y - this.h / 2;
     let bottom = this.pos.y + this.h / 2;
     if (left < x && x < right && top < y && y < bottom) {
-      this.w = this.w + ((PI * food.radius) ^ 2) / this.w / 2;
-      this.h = this.h + ((PI * food.radius) ^ 2) / this.h / 2;
+      this.w = this.w + (6 * ((PI * food.radius) ^ 2)) / this.w / 2;
+      this.h = this.h + (6 * ((PI * food.radius) ^ 2)) / this.h / 2;
       return true;
     }
   }
